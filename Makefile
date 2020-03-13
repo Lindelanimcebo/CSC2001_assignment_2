@@ -12,7 +12,9 @@ $(BINDIR)/%.class:$(SRCDIR)/%.java
 	
 CLASSES=Entry.class FileHelper.class \
 BinaryTreeNode.class BTQueueNode.class BTQueue.class  BinaryTree.class \
-BinarySearchTree.class LSBST.class LSBSTApp.class
+BinarySearchTree.class AVLTree.class \
+LSBST.class LSBSTApp.class \
+LSAVLT.class LSAVLTApp.class
 
 CLASS_FILES=$(CLASSES:%.class=$(BINDIR)/%.class)
 
@@ -35,7 +37,7 @@ docs:
 	javadoc -d doc/ src/*.java
 
 runA:
-	java -cp bin LSAVLApp $(stage) $(day) $(time)
+	java -cp bin LSAVLTApp $(stage) $(day) $(time)
 
 runB:
 	java -cp bin LSBSTApp $(stage) $(day) $(time)

@@ -108,3 +108,4 @@ if __name__ == "__main__":
 
     generate(start, stop, step)
     main('LSBSTApp')
+    main('LSAVLTApp')
