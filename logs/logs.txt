@@ -1,4 +1,0 @@
-Mar 14, 2020 1:45:52 AM LSAVLTApp main
-INFO: The areas are: 8, 16, 4, 12, 5, 13
-insert	find
-40	5
