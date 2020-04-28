@@ -36,7 +36,7 @@ public class LSBSTApp {
         }
 
         
-        LSBST tree = new LSBST( file_name );
+        BTHelper tree = new BTHelper( file_name , new BinarySearchTree<Entry>() );
         
         if ( length == 0 ) {
             tree.printAllAreas();

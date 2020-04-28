@@ -60,6 +60,7 @@ public class AVLTree<dataType extends Comparable<? super dataType>> extends Bina
       return p;
    }
 
+   @Override
    public void insert ( dataType d )
    {
       root = insert (d, root);

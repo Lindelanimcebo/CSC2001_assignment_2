@@ -2,8 +2,13 @@
 // 26 March 2017
 // Hussein Suleman
 
-public class BinaryTree<dataType>
-{
+public abstract class BinaryTree<dataType>
+{  
+   public abstract BinaryTreeNode<dataType> find (dataType d);
+   public abstract void insert (dataType d);
+   public abstract int getInsertCounter();
+   public abstract int getComparisonCounter();
+
    BinaryTreeNode<dataType> root;
    
    public BinaryTree ()

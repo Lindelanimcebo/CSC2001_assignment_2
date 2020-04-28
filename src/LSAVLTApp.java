@@ -36,7 +36,8 @@ public class LSAVLTApp {
         }
 
         
-        LSAVLT tree = new LSAVLT( file_name );
+        //LSAVLT tree = new LSAVLT( file_name );
+        BTHelper tree = new BTHelper( file_name , new AVLTree<Entry>() );
         
         if ( length == 0 ) {
             tree.printAllAreas();

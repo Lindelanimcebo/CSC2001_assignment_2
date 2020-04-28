@@ -10,11 +10,10 @@ DOCDIR=doc
 $(BINDIR)/%.class:$(SRCDIR)/%.java
 	$(JAVAC) -d $(BINDIR)/ -cp $(BINDIR) $<
 	
-CLASSES=Entry.class FileHelper.class \
+CLASSES=Entry.class \
 BinaryTreeNode.class BTQueueNode.class BTQueue.class  BinaryTree.class \
 BinarySearchTree.class AVLTree.class \
-LSBST.class LSBSTApp.class \
-LSAVLT.class LSAVLTApp.class
+BTHelper.class LSBSTApp.class LSAVLTApp.class
 
 CLASS_FILES=$(CLASSES:%.class=$(BINDIR)/%.class)
 

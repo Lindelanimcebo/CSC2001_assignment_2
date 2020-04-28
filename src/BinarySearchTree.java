@@ -6,7 +6,8 @@ public class BinarySearchTree<dataType extends Comparable<? super dataType>> ext
 {
    
    private int insertCounter = 0;
-    
+
+   @Override 
    public void insert ( dataType d )
    {
       if (root == null)

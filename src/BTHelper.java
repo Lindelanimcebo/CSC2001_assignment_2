@@ -1,39 +1,57 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 /**
-* This is a model class to stro and handle operations of the AVL Tree
-*
+* This is a Helper class to handle operations of the Binary Tree.
+* The binary tree can be AVL or Binary Search Tree.
 * @author Lindelani Mbatha
 */
-public class LSAVLT {
+public class BTHelper {
     
-    private AVLTree<Entry> tree;
-    private FileHelper helper;
+    private BinaryTree<Entry> tree;
+    private File file;
+    private Scanner scanner;
     
+    /**
+    * Constructor to initialise instance variables and add entries to the Binary Search tree
+    * @param file is a string representing the file path
+    * @see #addEntries()
+    */
+    public BTHelper ( String file, BinarySearchTree<Entry> tree ){
+        this.tree = tree;
+        addEntries( file );
+    }
+
     /**
     * Constructor to initialise instance variables and add entries to the AVL tree
     * @param file is a string representing the file path
     * @see #addEntries()
     */
-    public LSAVLT ( String file) {
-        
-        tree = new AVLTree<Entry>();
-        helper = new FileHelper( file );
-        
-        this.addEntries();
+    public BTHelper ( String file, AVLTree<Entry> tree ){
+        this.tree = tree;
+        addEntries( file );
     }
-    
+
     /**
-    * Helper method to add entries from the file to the AVL tree
+    * Helper method to add entries from the file to the Binary tree
     */
-    private void addEntries () {
-        
-        while( helper.hasNextLine() ){
-            tree.insert( helper.readLine() );
+    private void addEntries ( String file ) {
+        try{
+            this.file = new File( file );
+            this.scanner = new Scanner( this.file );
+
+            while (scanner.hasNextLine() ){
+                String line[] = scanner.nextLine().split(" ",2);
+                this.tree.insert( new Entry( line[0], line[1] ) );
+            }
+
+        } catch(Exception e){
+            e.printStackTrace();
         }
-        
     }
     
     /**
-    * Finds the entry from the AVL tree
+    * Finds the entry from the Binary tree
     * @param other is an Entry object in question
     * @return an Entry object with the data of the found BianryTreeNode
     */
