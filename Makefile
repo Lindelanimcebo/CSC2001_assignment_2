@@ -22,12 +22,14 @@ default: $(CLASS_FILES)
 
 clean:
 	rm $(BINDIR)/*.class
-	rm $(SRCDIR)/*~
 	rm $(LOGSDIR)/*
 
 clean-backup:
 	rm ./*~
 	rm ./*/*~
+
+clean-docs:
+	rm $(DOCDIR)/*
 	
 clean-t:
 	rm $(DATADIR)/*test*
