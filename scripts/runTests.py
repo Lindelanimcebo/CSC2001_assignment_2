@@ -12,11 +12,8 @@ def main ( app ):
     index = pd.MultiIndex.from_arrays([['insert' for i in range(0,3)]+['find' for i in range(0,3)], ['best_case', 'average_case', 'worst_case']*2])
     df_stats = pd.DataFrame(columns = index)
     
-    for i in range(start, stop, step):
+    for i in range(start, stop+1, step):
     
-        if (i>2666):
-            i = 2976
-        
         file_name = './data/test_n_'+str(i)+'.txt'
         file = open( file_name , 'r' );
                 
@@ -24,20 +21,24 @@ def main ( app ):
         
         for line in file:
 
-            command = 'java -cp bin '+app+' '+stage(line)+' '+day(line)+' '+time(line)+' '+file_name
-            cmd = command.split()
+            command = 'java -cp bin '+app+' '+stage(line)+' '+day(line)+' '+time(line)+' '+file_name+' > ./logs/logs.txt'
+            #cmd = command.split()
             print(command)
-            
             os.system(command)
             
             with open('./logs/logs.txt', 'r') as output:
                 output_to_dict(data_dict, [line.strip() for line in output.readlines()])
         
+        with open('./logs/insert_log.txt', 'r') as insert_log:
+            for j in insert_log.readlines():
+                data_dict['insert'].append( int(j) ) 
+        
         index = pd.MultiIndex.from_arrays([ [i,i], ['insert', 'find'] ])
         
         df_n = pd.DataFrame(data=np.array([data_dict['insert'], data_dict['find']]).T , columns=index)
         
-        df_stats.loc[i] = [df_n[i]['insert'].min() ,df_n[i]['insert'].sum()/i , df_n[i]['insert'].max(), df_n[i]['find'].min(), df_n[i]['find'].sum()/i, df_n[i]['find'].max()]
+        #df_stats.loc[i] = [df_n[i]['insert'].min() ,df_n[i]['insert'].sum()/i , df_n[i]['insert'].max(), df_n[i]['find'].min(), df_n[i]['find'].sum()/i, df_n[i]['find'].max()]
+        df_stats.loc[i] = [df_n[i]['insert'].min() ,df_n[i]['insert'].sum()/int(i) , df_n[i]['insert'].max(), df_n[i]['find'].min(), df_n[i]['find'].sum()/int(i), df_n[i]['find'].max()]
         df = pd.concat([df, df_n], axis=1, sort=False)
             
     with open('./logs/test_'+app+'_raw_data.csv', 'w') as out:
@@ -53,11 +54,8 @@ def main ( app ):
     plt.show()
         
 def output_to_dict( dict, output):
-    
-    insert, comparison = [int(i) for i in output[3].split('\t')]
-            
-    dict['insert'].append(insert)
-    dict['find'].append(comparison)         
+    comparison = int( output[2].split('\t')[1] )
+    dict['find'].append(comparison)       
     
 def stage(line):
     return line[0]
@@ -72,15 +70,8 @@ def time(line):
 def generate (start, stop, step):
     f_data = open("./data/data.txt", 'r')
     data = f_data.readlines()
-    
-    f_full = open("./data/test_n_2976.txt", "w")
-    
-    for line in data:
-        f_full.write(line)
-    
-    f_full.close()
-    
-    for n in range(start, stop, step):
+
+    for n in range(start, stop+1, step):
     
         f_n = open("./data/test"+"_n_"+str(n)+".txt", 'w')
         indeces = random.sample(range(2976), n)
