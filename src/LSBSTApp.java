@@ -1,15 +1,10 @@
-import java.util.logging.Logger;
-import java.util.logging.FileHandler;
-import java.util.logging.SimpleFormatter;
 import java.io.IOException;
-
 /**
 * Binary Search Tree application main class
 * 
 * @author Lindelani Mbatha
 */
 public class LSBSTApp {
-
     /**
     * application main method
     * @param <code> String [] <code> args can either be empty or 3 spaced 1-2 digit numbers, 
@@ -21,34 +16,17 @@ public class LSBSTApp {
         
         String file_name = length == 4 ? args[3] : "./data/data.txt";
         
-        Logger logger = Logger.getLogger(LSBSTApp.class.getName());
-        FileHandler fh;
-        
-        try {
-
-            fh = new FileHandler("./logs/logs.txt");
-            logger.addHandler( fh );
-            SimpleFormatter formatter = new SimpleFormatter();
-            fh.setFormatter( formatter );
-            
-        } catch ( IOException e ) {
-            e.printStackTrace();
-        }
-
-        
         BTHelper tree = new BTHelper( file_name , new BinarySearchTree<Entry>() );
         
         if ( length == 0 ) {
             tree.printAllAreas();
         }
         else if ( length == 3 || length == 4){
-            logger.info( tree.printAreas( args[0], args[1], args[2] ) );
+            System.out.println( tree.printAreas( args[0], args[1], args[2] ) );
         }
         else {
             System.out.println("Invalid arguments to main function");
-        }
-       
-        
+        } 
     }
     
 }

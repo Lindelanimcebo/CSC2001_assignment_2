@@ -1,0 +1,5 @@
+,insert,insert,insert,find,find,find
+,best_case,average_case,worst_case,best_case,average_case,worst_case
+5,7.0,7.0,7.0,1.0,2.2,3.0
+10,22.0,22.0,22.0,1.0,2.9,4.0
+15,42.0,42.0,42.0,1.0,3.4,5.0

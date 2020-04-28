@@ -1,4 +1,4 @@
-Apr 28, 2020 5:48:32 PM LSAVLTApp main
-INFO: The areas are: 5, 13
+Apr 28, 2020 11:44:20 PM LSBSTApp main
+INFO: The areas are: 11, 3, 7, 15, 12, 4, 8, 16
 insert	find
-32301	9
+192	187

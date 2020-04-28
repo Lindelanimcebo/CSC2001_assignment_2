@@ -1,6 +1,5 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 /**
 * This is a Helper class to handle operations of the Binary Tree.
 * The binary tree can be AVL or Binary Search Tree.
@@ -11,7 +10,6 @@ public class BTHelper {
     private BinaryTree<Entry> tree;
     private File file;
     private Scanner scanner;
-    
     /**
     * Constructor to initialise instance variables and add entries to the Binary Search tree
     * @param file is a string representing the file path
@@ -21,7 +19,6 @@ public class BTHelper {
         this.tree = tree;
         addEntries( file );
     }
-
     /**
     * Constructor to initialise instance variables and add entries to the AVL tree
     * @param file is a string representing the file path
@@ -31,7 +28,6 @@ public class BTHelper {
         this.tree = tree;
         addEntries( file );
     }
-
     /**
     * Helper method to add entries from the file to the Binary tree
     */
@@ -40,16 +36,22 @@ public class BTHelper {
             this.file = new File( file );
             this.scanner = new Scanner( this.file );
 
+            FileWriter fr = new FileWriter( "./logs/insert_log.txt" );
+            BufferedWriter br = new BufferedWriter( fr );
+
             while (scanner.hasNextLine() ){
                 String line[] = scanner.nextLine().split(" ",2);
                 this.tree.insert( new Entry( line[0], line[1] ) );
-            }
 
+                br.write( Integer.toString(this.tree.getInsertCounter()) );
+                br.newLine();
+            }
+            br.close();
+            fr.close();
         } catch(Exception e){
             e.printStackTrace();
         }
     }
-    
     /**
     * Finds the entry from the Binary tree
     * @param other is an Entry object in question
@@ -59,7 +61,6 @@ public class BTHelper {
         BinaryTreeNode<Entry> result  = tree.find(other);
         return result == null ? null : result.data;
     }
-    
     /**
     * finds the Entry with a specific slot
     * @param slot is the slot to find
@@ -69,7 +70,6 @@ public class BTHelper {
     public Entry find ( String slot ) {
         return this.find( new Entry(slot) );
     }
-    
     /**
     * Prints areas of a specif slot
     * @param stage is the stage string
@@ -88,7 +88,6 @@ public class BTHelper {
         ( ( tree.getInsertCounter() ) + "\t" + ( tree.getComparisonCounter() ) )
         );
     }
-    
     /**
     * void function to print all areas
     */    
