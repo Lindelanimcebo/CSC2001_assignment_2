@@ -20,28 +20,28 @@ CLASS_FILES=$(CLASSES:%.class=$(BINDIR)/%.class)
 default: $(CLASS_FILES)
 
 clean:
-	rm $(BINDIR)/*.class
-	rm $(LOGSDIR)/*
+	rm -f $(LOGSDIR)/*
+	rm -f $(BINDIR)/*.class
 
 clean-backup:
-	rm ./*~
-	rm ./*/*~
+	rm -f ./*~
+	rm -f ./*/*~
 
 clean-docs:
-	rm $(DOCDIR)/*
+	rm -f $(DOCDIR)/*
 	
 clean-t:
-	rm $(DATADIR)/*test*
-	rm $(LOGSDIR)/*test*
-	rm $(LOGSDIR)/*.png
+	rm -f $(DATADIR)/*test*
+	rm -f $(LOGSDIR)/*test*
+	rm -f $(LOGSDIR)/*.png
 
 clean-all:
-	rm $(BINDIR)/*.class
-	rm $(LOGSDIR)/*
-	rm $(DOCDIR)/*
-	rm $(DATADIR)/*test*
-	rm ./*~
-	rm ./*/*~
+	rm -f $(BINDIR)/*.class
+	rm -f $(LOGSDIR)/*
+	rm -f $(DOCDIR)/*
+	rm -f $(DATADIR)/*test*
+	rm -f ./*~
+	rm -f ./*/*~
 docs:
 	javadoc -d doc/ src/*.java
 

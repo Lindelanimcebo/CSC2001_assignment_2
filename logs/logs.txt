@@ -1,3 +1,0 @@
-The areas are: 11, 3, 7, 15, 8, 16
-insert	find
-13	14
