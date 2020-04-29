@@ -38,10 +38,10 @@ docs:
 	javadoc -d doc/ src/*.java
 
 runA:
-	java -cp bin LSAVLTApp $(stage) $(day) $(time)
+	java -cp bin LSAVLTApp $(stage) $(day) $(time) > ./logs/logs.txt
 
 runB:
-	java -cp bin LSBSTApp $(stage) $(day) $(time)
+	java -cp bin LSBSTApp $(stage) $(day) $(time) > ./logs/logs.txt
 	
 test:
 	python3.8 scripts/runTests.py

@@ -51,7 +51,7 @@ def main ( app ):
    
     axes = df_stats.plot.line()
     plt.savefig('./logs/'+app+'_graphs.png')
-    plt.show()
+    #plt.show()
         
 def output_to_dict( dict, output):
     comparison = int( output[2].split('\t')[1] )
