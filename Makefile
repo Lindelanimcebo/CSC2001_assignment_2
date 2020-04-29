@@ -34,6 +34,14 @@ clean-t:
 	rm $(DATADIR)/*test*
 	rm $(LOGSDIR)/*test*
 	rm $(LOGSDIR)/*.png
+
+clean-all:
+	rm $(BINDIR)/*.class
+	rm $(LOGSDIR)/*
+	rm $(DOCDIR)/*
+	rm $(DATADIR)/*test*
+	rm ./*~
+	rm ./*/*~
 docs:
 	javadoc -d doc/ src/*.java
 
